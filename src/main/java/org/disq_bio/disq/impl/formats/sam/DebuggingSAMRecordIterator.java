@@ -24,7 +24,11 @@ public class DebuggingSAMRecordIterator implements Iterator<SAMRecord> {
   public SAMRecord next() {
     SAMRecord next = it.next();
     if (next.getReadName().equals(readName)) {
-      System.out.println("tw: found read name in " + source);
+      System.out.println(
+          "tw: found read name in "
+              + source
+              + " with file pointer "
+              + next.getFileSource().getFilePointer());
     }
     return next;
   }

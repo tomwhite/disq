@@ -66,6 +66,7 @@ public abstract class AbstractSamSource implements Serializable {
         SamReaderFactory.makeDefault()
             .setOption(SamReaderFactory.Option.CACHE_FILE_BASED_INDEXES, true)
             .setOption(SamReaderFactory.Option.EAGERLY_DECODE, false)
+            .setOption(SamReaderFactory.Option.INCLUDE_SOURCE_IN_RECORDS, true)
             .setUseAsyncIo(false);
     if (stringency != null) {
       readerFactory.validationStringency(stringency);
