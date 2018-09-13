@@ -14,6 +14,7 @@ import htsjdk.samtools.ValidationStringency;
 import htsjdk.samtools.util.CloseableIterator;
 import htsjdk.samtools.util.Locatable;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import org.apache.hadoop.conf.Configuration;
@@ -105,6 +106,9 @@ public abstract class AbstractBinarySamSource extends AbstractSamSource {
                       BAMFileSpan span = BAMFileReader.getFileSpan(queryIntervals, idx);
                       span = (BAMFileSpan) span.removeContentsBefore(splitSpan);
                       span = (BAMFileSpan) span.removeContentsAfter(splitSpan);
+                      if (span.toCoordinateArray() != null) {
+                        System.out.println("tw: path chunk for partition: " + pathChunk + ", coord array: " + Arrays.toString(span.toCoordinateArray()));
+                      }
                       intervalReadsIterator =
                           new AutocloseIteratorWrapper<>(
                               createIndexIterator(

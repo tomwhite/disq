@@ -96,7 +96,7 @@ public class BamSource extends AbstractBinarySamSource implements Serializable {
                   Configuration conf = confSer.getConf();
                   PathChunk pathChunk =
                       getFirstReadInPartition(conf, bgzfBlocks, stringency, referenceSourcePath);
-                  System.out.println("tw: path chunk for partition: " + pathChunk);
+                  //System.out.println("tw: path chunk for partition: " + pathChunk);
                   if (pathChunk == null) {
                     return Collections.emptyIterator();
                   }
