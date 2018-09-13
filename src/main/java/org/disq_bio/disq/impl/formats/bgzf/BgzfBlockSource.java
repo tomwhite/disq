@@ -42,6 +42,7 @@ public class BgzfBlockSource implements Serializable {
         .flatMap(
             (FlatMapFunction<PathSplit, BgzfBlock>)
                 pathSplit -> {
+                  System.out.println("tw: path split: " + pathSplit);
                   BgzfBlockGuesser bgzfBlockGuesser =
                       getBgzfSplitGuesser(confSer.getConf(), pathSplit.getPath());
                   return getBgzfBlockIterator(bgzfBlockGuesser, pathSplit);
