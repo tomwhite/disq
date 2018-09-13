@@ -108,7 +108,9 @@ public abstract class AbstractBinarySamSource extends AbstractSamSource {
                       span = (BAMFileSpan) span.removeContentsAfter(splitSpan);
                       if (span.toCoordinateArray() != null) {
                         System.out.println(
-                            "tw: path chunk for partition: "
+                            "tw: split span "
+                                + splitSpan
+                                + ", path chunk for partition: "
                                 + pathChunk
                                 + ", coord array: "
                                 + Arrays.toString(span.toCoordinateArray()));
