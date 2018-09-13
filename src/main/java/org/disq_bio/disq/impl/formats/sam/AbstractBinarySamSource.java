@@ -115,8 +115,11 @@ public abstract class AbstractBinarySamSource extends AbstractSamSource {
                       }
                       intervalReadsIterator =
                           new AutocloseIteratorWrapper<>(
-                              createIndexIterator(
-                                  samReader, queryIntervals, false, span.toCoordinateArray()),
+                              new DebuggingSAMRecordIterator(
+                                  createIndexIterator(
+                                      samReader, queryIntervals, false, span.toCoordinateArray()),
+                                  pathChunk.toString(),
+                                  "HK35MCCXX160204:6:2205:19207:40389"),
                               samReader);
                     }
 
