@@ -107,7 +107,11 @@ public abstract class AbstractBinarySamSource extends AbstractSamSource {
                       span = (BAMFileSpan) span.removeContentsBefore(splitSpan);
                       span = (BAMFileSpan) span.removeContentsAfter(splitSpan);
                       if (span.toCoordinateArray() != null) {
-                        System.out.println("tw: path chunk for partition: " + pathChunk + ", coord array: " + Arrays.toString(span.toCoordinateArray()));
+                        System.out.println(
+                            "tw: path chunk for partition: "
+                                + pathChunk
+                                + ", coord array: "
+                                + Arrays.toString(span.toCoordinateArray()));
                       }
                       intervalReadsIterator =
                           new AutocloseIteratorWrapper<>(
