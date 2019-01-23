@@ -40,6 +40,11 @@ import java.util.List;
 
 /**
  * See documentation about GCS compose at https://cloud.google.com/storage/docs/composite-objects.
+ *
+ * It might be possible to improve the way that composition is done, e.g.
+ * https://github.com/apache/hadoop/blob/trunk/hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-core/src/main/java/org/apache/hadoop/mapred/Merger.java#L782
+ * Or hierarchical merging using a parallel executor to perform compose operations
+ * in parallel. These need trying/benchmarking.
  */
 public class GcsConcatTest {
 
