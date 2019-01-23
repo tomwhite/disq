@@ -101,6 +101,10 @@ public class NioFileSystemWrapper implements FileSystemWrapper {
 
   @Override
   public void concat(Configuration conf, List<String> parts, String path) throws IOException {
+    if (path.startsWith("gs:")) {
+      GcsConcat.concat(parts, path);
+      return;
+    }
     try (OutputStream out = create(conf, path)) {
       for (final String part : parts) {
         Path src = asPath(part);

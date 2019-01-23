@@ -33,6 +33,7 @@ import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import com.google.common.collect.Lists;
+import org.disq_bio.disq.impl.file.GcsConcat;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -71,7 +72,7 @@ public class GcsConcatTest {
     System.out.println(blob);
   }
 
-  @Test
+  //@Test
   public void composeMore() {
     int n = 40;
     List<String> blobs = new ArrayList<>();
@@ -80,6 +81,17 @@ public class GcsConcatTest {
     }
     Blob blob = composeBlobs("gatk-tom-testdata", "concat/compose0-" + String.valueOf(n) + ".txt", blobs);
     System.out.println(blob);
+  }
+
+  @Test
+  public void viaNio() {
+    int n = 40;
+    List<String> parts = new ArrayList<>();
+    for (int i = 0; i < n; i++) {
+      parts.add("gs://gatk-tom-testdata/concat/data/" + String.valueOf(i) + ".txt");
+    }
+    String path = "gs://gatk-tom-testdata/concat/compose0-" + String.valueOf(n) + ".txt";
+    GcsConcat.concat(parts, path);
   }
 
 
